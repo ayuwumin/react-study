@@ -1,6 +1,7 @@
 //import React from 'react'
 import { Header } from './components/Header'
 import { Photo } from './components/Photo';
+import { useState } from 'react';
 
 // const App = () => {
 // return React.createElement('a',{
@@ -11,10 +12,11 @@ import { Photo } from './components/Photo';
 //or 
 //<a href='https://github.com/ayuwumin'>clique aqui</a>
 
-const App = () => {
+const App = () => { 
+    const [name, setName] = useState('Yae Miko') // state
 
-    const handleButtonClick = () => {
-        alert('Click')
+    const handleClick = () => {
+        setName('Raiden Shogun')
     }
 
     return(
@@ -27,7 +29,8 @@ const App = () => {
                 <img src="https://www.google.com.br/google.jpg"/>
             </Photo>
 
-            <button onClick={handleButtonClick}>Click Here!</button>
+            meu nome é {name}
+            <button onClick={handleClick}>Click Here!</button>
         </div>
     )
 }
