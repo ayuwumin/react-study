@@ -12,6 +12,11 @@ import { Photo } from './components/Photo';
 //<a href='https://github.com/ayuwumin'>clique aqui</a>
 
 const App = () => {
+
+    const handleButtonClick = () => {
+        alert('Click')
+    }
+
     return(
         <div>
             <Header title='Welcome'/>
@@ -19,8 +24,10 @@ const App = () => {
 
             
             <Photo legend="Google" >
-                <img src="https://google.com.br/google.jpg"/>
+                <img src="https://www.google.com.br/google.jpg"/>
             </Photo>
+
+            <button onClick={handleButtonClick}>Click Here!</button>
         </div>
     )
 }
