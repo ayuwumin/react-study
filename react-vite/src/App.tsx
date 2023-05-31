@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
+import { Button } from './components/button';
 
 
 const App = () => {
-    // const[n, setN] = useState(0)
-    // const[name, setName] = useState('')
+    let textButton = 'Click Here'
 
+    const buttonEventAction = (txt: string) => {
+        alert('Frase do app: ' +txt)
+    }    
 
     const [name1, setName1] =useState('')
     const [surname, setSurname] =useState('')
     const [age, setAge] =useState('')
 
-
+    // const[n, setN] = useState(0)
+    // const[name, setName] = useState('')
     // const handleMinus = () => {
     //     setN(n-1)
     // }
@@ -24,7 +28,7 @@ const App = () => {
 
     return (
 
-        <div className="flex justify-center space-y-14">
+        <div className="flex justify-center space-y-14 font-sans">
             {/* <div>
             <button onClick={handleMinus}>-</button>
             <div>{n}</div>
@@ -46,7 +50,7 @@ const App = () => {
                 </div>
 
                 <div>
-                <label className="block text-sm font-medium leading-6 text-gray-900">Sobrenome:</label>
+                <label className="block text-sm font-medium leading-6 text-gray-900">Surname:</label>
                     <input type='text' value={surname} onChange={(event) => setSurname( event.target.value )} className='text-gray-900'/>
                 </div>
 
@@ -60,6 +64,11 @@ const App = () => {
                     Olá {name1} {surname}, sua idade é {age} anos.
                 </label>
             </div>
+
+            <div className='flex px-6 h-10 rounded hover:rounded-lg bg-sky-500 text-white'>
+                <Button text={textButton} clickFn={buttonEventAction}/>
+            </div>
+
         </div>
         
     )    
