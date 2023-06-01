@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Button } from './components/button';
-
+import { Person } from './components/Person';
 
 const App = () => {
+    let list = [
+        {name: 'yae', age:'400'},
+        {name: 'miko', age:'400'},
+        {name: 'raiden', age:'1000'},
+        {name: 'ayaka', age:'16'},
+    ]
+       
     let textButton = 'Click Here'
 
     const buttonEventAction = (txt: string) => {
@@ -13,35 +20,9 @@ const App = () => {
     const [surname, setSurname] =useState('')
     const [age, setAge] =useState('')
 
-    // const[n, setN] = useState(0)
-    // const[name, setName] = useState('')
-    // const handleMinus = () => {
-    //     setN(n-1)
-    // }
-    // const handleMore = () => {
-    //     setN(n+1)
-    // }
-
-    // const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setName( event.target.value )
-    // }
-
     return (
 
-        <div className="flex justify-center space-y-14 font-sans">
-            {/* <div>
-            <button onClick={handleMinus}>-</button>
-            <div>{n}</div>
-            <button onClick={handleMore}>+</button>
-            </div>
-            <div> 
-            
-            
-            <input type='text'value={name} onChange={handleInput}/>
-            <hr/>
-            Your name is: {name}
-            </div> */}
-
+        <div className="ml-10 justify-center space-y-14 font-sans">
             <div>
                 <div>
                 <h2 className="text-base font-semibold leading-7 text-gray-900">Form</h2>
@@ -65,12 +46,22 @@ const App = () => {
                 </label>
             </div>
 
-            <div className='flex px-6 h-10 rounded hover:rounded-lg bg-sky-500 text-white'>
+            <div className='flex justify-center w-32 px-6 h-10 rounded hover:rounded-lg bg-sky-500 text-white'>
                 <Button text={textButton} clickFn={buttonEventAction}/>
             </div>
 
-        </div>
-        
+
+            <div className='text-base font-semibold leading-7 text-gray-900'>
+                <h2>Lista de presença</h2>
+                <ul className='list-disc'>
+                    {list.map((item, index) =>(
+                        <Person key={index} data={item}/>
+                    ))}
+                </ul>
+                
+            </div>
+
+        </div> 
     )    
 }
 
