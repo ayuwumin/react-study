@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { Button } from './components/button';
 import { Person } from './components/Person';
 
 const App = () => {
+    const[show, setShow]= useState(false)
+    const handleClick = () => {
+        if(show) {
+            setShow(false)
+        } else {
+            setShow(true)
+        }
+    }
+
     let list = [
         {name: 'yae', age:'400'},
         {name: 'miko', age:'400'},
         {name: 'raiden', age:'1000'},
         {name: 'ayaka', age:'16'},
     ]
-       
-    let textButton = 'Click Here'
-
-    const buttonEventAction = (txt: string) => {
-        alert('Frase do app: ' +txt)
-    }    
 
     const [name1, setName1] =useState('')
     const [surname, setSurname] =useState('')
@@ -46,21 +48,20 @@ const App = () => {
                 </label>
             </div>
 
-            <div className='flex justify-center w-32 px-6 h-10 rounded hover:rounded-lg bg-sky-500 text-white'>
-                <Button text={textButton} clickFn={buttonEventAction}/>
+            <div className='flex justify-center w-32 px-6 h-10 rounded hover:rounded-lg bg-sky-500 text-white' >
+                <button onClick={handleClick}>{show ? 'Ocultar' : 'Mostrar'}</button>
             </div>
 
-
-            <div className='text-base font-semibold leading-7 text-gray-900'>
-                <h2>Lista de presença</h2>
-                <ul className='list-disc'>
-                    {list.map((item, index) =>(
+            {show == true && 
+                <div className='text-base font-semibold leading-7 text-gray-900'>
+                    <h2>Lista de presença</h2>
+                    <ul className='list-disc'>
+                        {list.map((item, index) =>(
                         <Person key={index} data={item}/>
-                    ))}
-                </ul>
-                
-            </div>
-
+                        ))}
+                    </ul>
+                </div>
+            }
         </div> 
     )    
 }
