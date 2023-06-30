@@ -1,24 +1,42 @@
 "use client";
 import { useState } from "react";
+import { Person } from "../types/Person";
 
 const Page = () => {
-  const [count, setCount] = useState<number>(0);
+  const [fullName, setFullName] = useState<Person>({
+    name: "First Name",
+    lastName: "Last Name",
+  });
 
-  const handleBtnClick = () => {
-    setCount(count + 2);
-    setCount((c) => c + 2);
+  const handleClearButton = () => {
+    setFullName({ name: "", lastName: "" });
   };
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center itens-center text-3xl">
       <div>
-        <p>{count}</p>
-        <button
-          onClick={handleBtnClick}
-          className="bg-blue-500 p-3 text-white rounded-md"
-        >
-          +2
-        </button>
+        <input
+          type="text"
+          placeholder="Nome"
+          className="border border-black p-3 text-2x1 text-black rounded-md mb-3"
+          value={fullName.name}
+          onChange={(e) => setFullName({ ...fullName, name: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Sobrenome"
+          className="border border-black p-3 text-2x1 text-black rounded-md mb-3"
+          value={fullName.lastName}
+          onChange={(e) =>
+            setFullName({ ...fullName, lastName: e.target.value })
+          }
+        />
+
+        <p>Meu nome completo é:</p>
+        <p>
+          {fullName.name} {fullName.lastName}
+          <button onClick={handleClearButton}>Clear</button>
+        </p>
       </div>
     </div>
   );
